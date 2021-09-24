@@ -1,0 +1,16 @@
+[ {
+  "apiResources" : [ "/*", "/", "/**" ],
+  "approvalType" : "auto",
+  "attributes" : [ {
+    "name" : "sample_attribute_0",
+    "value" : "sample_attribute_value_0"
+  } ],
+  "displayName" : "profileAPI",
+  "environments" : [ ],
+  "name" : "profileAPI",
+  "proxies" : [ "profileAPI" ],
+  "quota" : "100",
+  "quotaInterval" : "1",
+  "quotaTimeUnit" : "minute",
+  "scopes" : [ ]
+} ]

@@ -1,0 +1,13 @@
+[ {
+  "apps" : [ ],
+  "email" : "sathishkumar.kuppuswami@zeotap.com",
+  "developerId" : "14f71f9b-de80-4d21-9f1b-ba4ee9f898f1",
+  "firstName" : "Sathishkumar",
+  "lastName" : "K",
+  "userName" : "SK",
+  "status" : "active",
+  "attributes" : [ {
+    "name" : "sample_attribute_0",
+    "value" : "sample_attribute_value_0"
+  } ]
+} ]

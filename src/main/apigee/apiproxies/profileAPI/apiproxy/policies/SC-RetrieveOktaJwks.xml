@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC-RetrieveOktaJwks">
+    <DisplayName>SC-RetrieveOktaJwks</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="false">
+        <Set>
+            <Verb>GET</Verb>
+        </Set>
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>oktaJwksResponse</Response>
+    <HTTPTargetConnection>
+        <Properties>
+            <Property name="success.codes">2xx</Property>
+        </Properties>
+        <URL>https://login-staging.zeotap.com/oauth2/aus1uzinczVzLOD6Q0x7/v1/keys</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

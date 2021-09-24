@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="Assign-JWT-Claims">
+    <DisplayName>Assign JWT Claims</DisplayName>
+    <Properties/>
+    <Remove>
+        <Headers>
+            <Header name="Authorization"/>
+        </Headers>
+    </Remove>
+    <Add>
+        <Headers>
+            <Header name="issuer">{jwt.Verify-JWT-1.claim.issuer}</Header>
+            <Header name="scopes">{jwt.Verify-JWT-1.claim.scp}</Header>
+            <Header name="audience">{jwt.Verify-JWT-1.claim.audience}</Header>
+            <Header name="subject">{jwt.Verify-JWT-1.claim.subject}</Header>
+            <Header name="Authorization">Bearer gStRMnieJiPsnAlH[dAfp2gK^YV]&lt;YuDqwxyW/lNOo&gt;C0]12pRQ4EXLtuYldYqX</Header>
+        </Headers>
+        <QueryParams/>
+        <FormParams/>
+    </Add>
+    <Set>
+        <Headers/>
+        <QueryParams/>
+        <FormParams/>
+        <!-- <Verb>GET</Verb> -->
+        <Path/>
+    </Set>
+    <AssignVariable>
+        <Name>name</Name>
+        <Value/>
+        <Ref/>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

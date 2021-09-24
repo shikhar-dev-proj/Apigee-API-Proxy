@@ -1,0 +1,16 @@
+<TargetEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows/>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPTargetConnection>
+        <URL>https://idgraph-qa.zeotap.com/graph-manager/v1/internal/users</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>

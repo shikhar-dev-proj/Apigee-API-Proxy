@@ -1,0 +1,19 @@
+[
+  {
+    "attributes": [
+      {
+        "name": "sample_attribute_0",
+        "value": "sample_attribute_value_0"
+      }
+    ],
+    "developerEmail": "sathishkumar.kuppuswami@zeotap.com",
+    "name": "VM-AdobeTarget",
+    "displayName": "VM-AdobeTarget",
+    "callbackUrl": "",
+    "apiProducts": [
+      "profileAPI"
+    ],
+    "expiryType": "days",
+    "expiryValue": "10"
+  }
+]

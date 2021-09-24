@@ -1,0 +1,26 @@
+[ {
+  "apiProducts" : [ ],
+  "appId" : "f69c0302-2ca5-4dd5-bde2-f85d5d2862ca",
+  "attributes" : [ {
+    "name" : "sample_attribute_0",
+    "value" : "sample_attribute_value_0"
+  } ],
+  "callbackUrl" : "",
+  "credentials" : [ {
+    "apiProducts" : [ {
+      "apiproduct" : "profileAPI",
+      "status" : "approved"
+    } ],
+    "attributes" : [ ],
+    "consumerKey" : "B1VuUWtXyu1NfA5L0NsEZbEdXdAhwcDg",
+    "consumerSecret" : "5BWiVB4DXtCYY2dQ",
+    "expiresAt" : 1633335429692,
+    "issuedAt" : 1632471429692,
+    "scopes" : [ ],
+    "status" : "approved"
+  } ],
+  "developerId" : "14f71f9b-de80-4d21-9f1b-ba4ee9f898f1",
+  "name" : "VM-AdobeTarget",
+  "scopes" : [ ],
+  "status" : "approved"
+} ]

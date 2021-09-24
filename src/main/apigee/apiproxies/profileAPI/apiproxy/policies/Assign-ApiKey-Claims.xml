@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="Assign-ApiKey-Claims">
+    <DisplayName>Assign ApiKey Claims</DisplayName>
+    <Properties/>
+    <Add>
+        <Headers>
+            <Header name="app">{verifyapikey.Verify-API-Key.app.name}</Header>
+            <Header name="developer">{verifyapikey.Verify-API-Key.developer.email}</Header>
+            <Header name="scopes">{verifyapikey.Verify-API-Key.app.scope}</Header>
+        </Headers>
+        <QueryParams/>
+        <FormParams/>
+    </Add>
+    <Set>
+        <Headers/>
+        <QueryParams/>
+        <FormParams/>
+        <!-- <Verb>GET</Verb> -->
+        <Path/>
+    </Set>
+    <AssignVariable>
+        <Name>name</Name>
+        <Value/>
+        <Ref/>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

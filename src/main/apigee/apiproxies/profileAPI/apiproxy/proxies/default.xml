@@ -1,0 +1,113 @@
+<ProxyEndpoint name="default">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+      <Request/>
+      <Response/>
+  </PreFlow>
+  <Flows>
+      <Flow name="parse + validate a JWT obtained from Okta">
+          <Description>Parse / Verify a JWT created by Okta</Description>
+          <Request>
+              <Step>
+                  <Condition>request.header.authorization = null</Condition>
+                  <FaultRules/>
+                  <Name>RF-MissingHeader</Name>
+              </Step>
+              <Step>
+                  <FaultRules/>
+                  <Name>EV-JWT</Name>
+              </Step>
+              <Step>
+                  <Name>DecodeJWT-ExtractExpirySecondsRemaining</Name>
+              </Step>
+              <Step>
+                  <Name>CacheLookup-OktaJwks</Name>
+              </Step>
+              <Step>
+                  <Condition>cached.okta.jwks = null</Condition>
+                  <FaultRules/>
+                  <Name>SC-RetrieveOktaJwks</Name>
+              </Step>
+              <Step>
+                  <Condition>cached.okta.jwks = null</Condition>
+                  <Name>CacheInsert-OktaJwks</Name>
+              </Step>
+              <Step>
+                  <Condition>cached.okta.jwks = null</Condition>
+                  <Name>AV-OktaJwks</Name>
+              </Step>
+              <Step>
+                  <FaultRules/>
+                  <Name>Verify-JWT-1</Name>
+              </Step>
+              <Step>
+                  <FaultRules/>
+                  <Condition>(proxy.pathsuffix MatchesPath "/_search") and (jwt.Verify-JWT-1.claim.scp !~ "*profile.read*"</Condition>
+                  <Name>RF-MissingRequiredScope</Name>
+              </Step>
+              <Step>
+                  <FaultRules/>
+                  <Condition>proxy.pathsuffix MatchesPath "/token"</Condition>
+                  <Name>RF-TestTokenOK</Name>
+              </Step>
+              <Step>
+                  <Name>Assign-JWT-Claims</Name>
+              </Step>
+          </Request>
+          <Condition>(request.header.apikey = null) and (request.verb = "POST") and 
+              (
+                  (proxy.pathsuffix MatchesPath "/_search") or
+                  (proxy.pathsuffix MatchesPath "/token")
+              )
+          </Condition>
+      </Flow>
+      <Flow name="validate APIKey">
+          <Description>Validate API Key</Description>
+          <Request>
+              <Step>
+                  <Condition>request.header.apikey = null</Condition>
+                  <FaultRules/>
+                  <Name>RF-MissingHeader</Name>
+              </Step>
+              <Step>
+                  <FaultRules/>
+                  <Name>Verify-API-Key</Name>
+              </Step>
+              <Step>
+                  <FaultRules/>
+                  <Condition>proxy.pathsuffix MatchesPath "/token"</Condition>
+                  <Name>RF-TestTokenOK</Name>
+              </Step>
+              <Step>
+                  <Name>Assign-ApiKey-Claims</Name>
+              </Step>
+          </Request>
+          <Condition>(request.header.authorization = null) and (request.verb = "POST") and 
+              (
+                  (proxy.pathsuffix MatchesPath "/_search") or
+                  (proxy.pathsuffix MatchesPath "/token")
+              )
+          </Condition>
+      </Flow>
+      <Flow name="unknown request">
+          <Request>
+              <Step>
+                  <FaultRules/>
+                  <Name>RF-UnknownRequest</Name>
+              </Step>
+          </Request>
+          <Response/>
+      </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+      <Request/>
+      <Response/>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>/profileAPI</BasePath>
+  </HTTPProxyConnection>
+    <RouteRule name="default">
+     <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

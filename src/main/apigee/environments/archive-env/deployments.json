@@ -1,0 +1,6 @@
+{
+  "proxies": [
+    "profileAPI"
+  ],
+  "sharedflows": []
+}
